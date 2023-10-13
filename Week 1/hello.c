@@ -4,6 +4,6 @@ int main(void)
 {
     char name[40];
     printf("Enter your name: ");
-    fgets(name, 40, stdin);
+    fgets(name, sizeof name, stdin);
     printf("Hello, %s", name);
 }
