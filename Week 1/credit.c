@@ -95,8 +95,8 @@ int find_card_type(long card_number)
         printf("AMEX\n");
         return(0);
     }
-    // all Mastercard cards are 15 digits long and start with 51-55
-    else if (card_num_length == 16 && (51 <= starting_digits && starting_digits >= 55)) {
+    // all Mastercard cards are 16 digits long and start with 51-55
+    else if (card_num_length == 16 && (51 <= starting_digits && starting_digits <= 55)) {
         printf("MASTERCARD\n");
         return(0);
     }
