@@ -14,7 +14,7 @@ int main(void)
         fgets(buf, sizeof buf, stdin);
         height = atoi(buf);
     }
-    while (height < 1 || height > 16);
+    while (height < 1 || height > 8);
 
     print_pyramid(height);
 }
