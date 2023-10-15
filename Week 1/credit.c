@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void check_card(long);
+int check_card(long);
 int find_card_type(long);
 
 int main(void) {
-    char buf[16];
+    char buf[32];
     long card_number;
 
     // prompt for a number and check if the value can be converted to long
@@ -17,25 +17,35 @@ int main(void) {
     }
     while (card_number < 1);
 
-    check_card(card_number);
+    if (check_card(card_number) == 0)
+    {
+        find_card_type(card_number);
+    }
+
+    else
+    {
+        printf("INVALID\n");
+    }
 
     return(0);
 }
 
 // Luhn's algorithm
-void check_card(long card_number)
+int check_card(long card_number)
 {
-    int first_sum = 0;
-    int second_sum = 0;
+    int first_sum = 0, second_sum = 0;
+    long temp = card_number;
 
-    while (card_number > 0)
+    while (temp > 0)
     {
         // first/second from the back
-        int first_digit = card_number % 10;
-        int second_digit = (card_number % 10) % 10;
+        //printf("%li", card_number);
+        int first_digit = temp % 10;
+        int second_digit = (temp / 10) % 10;
+        //printf("Card: %li,\n First: %d,\n Second: %d\n", card_number, first_digit, second_digit);
 
         // removes two digits from the back
-        card_number /= 100;
+        temp /= 100;
 
         first_sum += first_digit;
 
@@ -44,9 +54,9 @@ void check_card(long card_number)
         {
             second_sum += second_digit * 2 / 10;
             second_sum += second_digit * 2 % 10;
-        }  
+        }
 
-        else 
+        else
         {
             second_sum += second_digit * 2;
         }
@@ -54,26 +64,26 @@ void check_card(long card_number)
 
     if ((first_sum + second_sum) % 10 != 0)
     {
-        printf("INVALID");
-        exit(0);
+        return(1);
     }
 
-    else 
+    else
     {
-        find_card_type(card_number);
+        return(0);
     }
 }
 
 int find_card_type(long card_number)
     {
     int card_num_length = 0;
-    while (card_number < 0)
+    long temp = card_number;
+    while (temp > 0)
     {
-        card_number /= 10;
+        temp /= 10;
         card_num_length += 1;
     }
 
-    int starting_digits = card_number;
+    long starting_digits = card_number;
     while (starting_digits > 100)
     {
         starting_digits /= 10;
@@ -95,7 +105,7 @@ int find_card_type(long card_number)
         printf("VISA\n");
         return(0);
     }
-    else 
+    else
     {
         printf("INVALID\n");
         return(0);
