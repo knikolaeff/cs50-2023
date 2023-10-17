@@ -40,10 +40,8 @@ int check_card(long card_number)
     while (temp > 0)
     {
         // first/second from the back
-        //printf("%li", card_number);
         int first_digit = temp % 10;
         int second_digit = (temp / 10) % 10;
-        //printf("Card: %li,\n First: %d,\n Second: %d\n", card_number, first_digit, second_digit);
 
         // removes two digits from the back
         temp /= 100;
