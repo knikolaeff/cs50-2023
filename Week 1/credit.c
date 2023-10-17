@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 int check_card(long);
-int find_card_type(long);
+void find_card_type(long);
 
 int main(void) {
     char buf[32];
@@ -72,7 +72,7 @@ int check_card(long card_number)
     }
 }
 
-int find_card_type(long card_number)
+void find_card_type(long card_number)
     {
     int card_num_length = 0;
     long card_copy = card_number;
@@ -92,21 +92,17 @@ int find_card_type(long card_number)
     if (card_num_length == 15 && (starting_digits == 34 || starting_digits == 37))
     {
         printf("AMEX\n");
-        return(0);
     }
     // all Mastercard cards are 16 digits long and start with 51-55
     else if (card_num_length == 16 && (51 <= starting_digits && starting_digits <= 55)) {
         printf("MASTERCARD\n");
-        return(0);
     }
     // all VISA cards are 13 or 16 digits long and start with 4
     else if ((card_num_length == 13 || card_num_length == 16) && starting_digits / 10 == 4) {
         printf("VISA\n");
-        return(0);
     }
     else
     {
         printf("INVALID\n");
-        return(0);
     }
     }
