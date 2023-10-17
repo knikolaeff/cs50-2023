@@ -4,7 +4,7 @@ My solutions to [CS50 2023](https://learning.edx.org/course/course-v1:HarvardX+C
 ## Table of Contents
 
 - [Week 0 - Scratch](#week-0)
-- Week 1 - C
+- [Week 1 - C](#week-1)
 - Week 2 - Arrays
 - Week 3 - Algorithms
 - Week 4 - Memory 
@@ -19,4 +19,8 @@ My solutions to [CS50 2023](https://learning.edx.org/course/course-v1:HarvardX+C
 ## Week 0
 ### Problem Set 0 
 - [Flappy Bird clone](Toucan.sb3)
+## Week 1
+### Problem Set 1
+- Mario (more comfortable)
+- Credit
 
