@@ -15,16 +15,17 @@ int main(void) {
         fgets(buf, sizeof buf, stdin);
         card_number = atol(buf);
     }
-    while (card_number < 1);
+    while (card_number <= 0);
 
-    if (check_card(card_number) == 0)
+    if (check_card(card_number))
     {
-        find_card_type(card_number);
+        printf("INVALID\n");
+        
     }
 
     else
     {
-        printf("INVALID\n");
+        find_card_type(card_number);
     }
 
     return(0);
