@@ -4,7 +4,8 @@
 int check_card(long);
 void find_card_type(long);
 
-int main(void) {
+int main(void)
+{
     char buf[32];
     long card_number;
 
@@ -20,7 +21,6 @@ int main(void) {
     if (check_card(card_number))
     {
         printf("INVALID\n");
-        
     }
 
     else
@@ -28,7 +28,7 @@ int main(void) {
         find_card_type(card_number);
     }
 
-    return(0);
+    return (0);
 }
 
 // Luhn's algorithm
@@ -46,12 +46,14 @@ int check_card(long card_number)
         int digit = card_number % 10;
         card_number /= 10;
 
-        if (is_second_digit) {
+        if (is_second_digit)
+        {
             digit *= 2;
 
             // slices big numbers (>10) into products of the number
             // applicable only to the every other digit
-            if (digit > 9) {
+            if (digit > 9)
+            {
                 digit = digit % 10 + 1;
             }
         }
@@ -59,22 +61,21 @@ int check_card(long card_number)
         checksum += digit;
         is_second_digit = !is_second_digit;
         digit_counter++;
-
     }
 
     if (digit_counter < 13 || digit_counter > 16 || checksum % 10 != 0)
     {
-        return(1);
+        return (1);
     }
 
     else
     {
-        return(0);
+        return (0);
     }
 }
 
 void find_card_type(long card_number)
-    {
+{
     int card_num_length = 0;
     long card_copy = card_number;
     while (card_copy > 0)
@@ -95,15 +96,17 @@ void find_card_type(long card_number)
         printf("AMEX\n");
     }
     // all Mastercard cards are 16 digits long and start with 51-55
-    else if (card_num_length == 16 && (51 <= starting_digits && starting_digits <= 55)) {
+    else if (card_num_length == 16 && (51 <= starting_digits && starting_digits <= 55))
+    {
         printf("MASTERCARD\n");
     }
     // all VISA cards are 13 or 16 digits long and start with 4
-    else if ((card_num_length == 13 || card_num_length == 16) && starting_digits / 10 == 4) {
+    else if ((card_num_length == 13 || card_num_length == 16) && starting_digits / 10 == 4)
+    {
         printf("VISA\n");
     }
     else
     {
         printf("INVALID\n");
     }
-    }
+}
