@@ -34,34 +34,35 @@ int main(void) {
 // Luhn's algorithm
 int check_card(long card_number)
 {
-    int first_sum = 0, second_sum = 0;
-    long temp = card_number;
+    int checksum = 0;
+    int digit_counter = 0;
 
-    while (temp > 0)
+    // used to determine digit's position as the second digit must be doubled
+    int is_second_digit = 0;
+
+    while (card_number > 0)
     {
-        // first/second from the back
-        int first_digit = temp % 10;
-        int second_digit = (temp / 10) % 10;
+        // finds the first digit from the back and removes it from the original card number
+        int digit = card_number % 10;
+        card_number /= 10;
 
-        // removes two digits from the back
-        temp /= 100;
+        if (is_second_digit) {
+            digit *= 2;
 
-        first_sum += first_digit;
-
-        // slices big numbers (>10) into products of the number
-        if (second_digit * 2 > 9)
-        {
-            second_sum += second_digit * 2 / 10;
-            second_sum += second_digit * 2 % 10;
+            // slices big numbers (>10) into products of the number
+            // applicable only to the every other digit
+            if (digit > 9) {
+                digit = digit % 10 + 1;
+            }
         }
 
-        else
-        {
-            second_sum += second_digit * 2;
-        }
+        checksum += digit;
+        is_second_digit = !is_second_digit;
+        digit_counter++;
+
     }
 
-    if ((first_sum + second_sum) % 10 != 0)
+    if (digit_counter < 13 || digit_counter > 16 || checksum % 10 != 0)
     {
         return(1);
     }
