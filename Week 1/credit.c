@@ -75,11 +75,11 @@ int check_card(long card_number)
 int find_card_type(long card_number)
     {
     int card_num_length = 0;
-    long temp = card_number;
-    while (temp > 0)
+    long card_copy = card_number;
+    while (card_copy > 0)
     {
-        temp /= 10;
-        card_num_length += 1;
+        card_copy /= 10;
+        card_num_length++;
     }
 
     long starting_digits = card_number;
