@@ -1,5 +1,5 @@
-#include <stdio.h>
 #include <ctype.h>
+#include <stdio.h>
 #include <string.h>
 
 #define WORD_SIZE_LIMIT 128
@@ -29,7 +29,7 @@ int main(void)
 
     else if (score_2 > score_1)
     {
-    printf("Player 2 wins!");
+        printf("Player 2 wins!");
     }
 
     else
@@ -38,10 +38,10 @@ int main(void)
     }
 }
 
-int compute_score(char* word)
+int compute_score(char *word)
 {
 
-   int score = 0;
+    int score = 0;
 
     for (int i = 0; i < strlen(word); i++)
     {
