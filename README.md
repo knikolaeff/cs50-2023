@@ -36,3 +36,9 @@ My solutions to [CS50 2023](https://learning.edx.org/course/course-v1:HarvardX+C
 - [Hello World](/Week%201/Problem%20Set%201/hello.c)
 - [Mario (more comfortable)](/Week%201/Problem%20Set%201/mario-more.c)
 - [Credit](/Week%201/Problem%20Set%201/credit.c)
+
+## Week 2
+
+### Lab 2
+
+- [Scrabble](/Week%202/Lab%202/scrabble.c)
